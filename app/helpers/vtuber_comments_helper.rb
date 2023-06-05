@@ -1,0 +1,2 @@
+module VtuberCommentsHelper
+end

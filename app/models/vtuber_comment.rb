@@ -1,0 +1,2 @@
+class VtuberComment < ApplicationRecord
+end

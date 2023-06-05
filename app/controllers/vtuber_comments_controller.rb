@@ -1,0 +1,2 @@
+class VtuberCommentsController < ApplicationController
+end

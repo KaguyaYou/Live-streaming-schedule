@@ -9,7 +9,7 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li>
-            <%= link_to user_path(current_user),class: 'nav-link text-light' do %>
+            <%= link_to root_path(current_user),class: 'nav-link text-light' do %>
               <i class="fas fa-home"></i> Home
             <% end %>
           </li>
@@ -19,12 +19,12 @@
             <% end %>
           </li>
           <li>
-            <%= link_to books_path ,class: 'nav-link text-light' do %>
+            <%= link_to vtubers_path ,class: 'nav-link text-light' do %>
               <i class="fas fa-book-open"></i> Vtuber
             <% end %>
           </li>
           <li>
-            <%= link_to books_path ,class: 'nav-link text-light' do %>
+            <%= link_to _path ,class: 'nav-link text-light' do %>
               <i class="fas fa-book-open"></i> Review
             <% end %>
           </li>
@@ -40,13 +40,13 @@
             <% end %>
           </li>
           <li>
-            <%= link_to _path,class: 'nav-link text-light' do %>
+            <%= link_to vtubers_path,class: 'nav-link text-light' do %>
               <i class="fas fa-link"></i> Vtuber
             <% end %>
           </li>
           <li>
-            <%= link_to _path,class: 'nav-link text-light' do %>
-              <i class="fas fa-user-plus"></i> Review
+            <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-user-plus"></i> 新規登録
             <% end %>
           </li>
           <li>

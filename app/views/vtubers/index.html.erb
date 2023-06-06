@@ -2,6 +2,24 @@
   <div class="row">
     <div class="col-sm-12">
       <h2 class="d-inline-block">Vtuber一覧</h2>
+      <h5 class="d-inline-block">(全<%= @total_vtubers.count %>件)</h5>
     </div>
   </div>
+  <div class="row mt-3 text-center text-xs-center text-sm-center text-md-left">
+    <% @vtubers.each do |vtuber| %>
+    <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
+      <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+        <%= link_to product_path(product) do %>
+          <div class="img-wrap" style="margin-bottom: 10px;">
+            <%= image_tag(vtuber.image.presence || "no_image.jpg", width: "100%", height: "200px") %>
+          </div>
+        <% end %>
+        <div class="card-body">
+          <p class="product-details product-name card-text"><%= vtuber.name %></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <%= paginate(@vtubers) %>
 </div>

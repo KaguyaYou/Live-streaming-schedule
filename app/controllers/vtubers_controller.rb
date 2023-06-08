@@ -2,7 +2,11 @@ class VtubersController < ApplicationController
   def index
     @total_vtubers =Vtuber.all
     @vtubers = Vtuber.all.page(params[:page]).per(8)
-    @vutuber= Vtuber.new
+    @vtuber= Vtuber.new
+  end
+
+  def new
+    @vtuber =Vtuber.new
   end
 
   def show
@@ -17,11 +21,11 @@ class VtubersController < ApplicationController
 
   def create
     @vtuber = Vtuber.new(vtuber_params)
-    @vtuber.user_id = current_user_id
     if @vtuber.save
       flash[:notice]
-      redirect_to vtuber_path(@vtuber)
+      redirect_to vtubers_path
     else
+      render :new
     end
   end
 
@@ -31,5 +35,11 @@ class VtubersController < ApplicationController
 
   def update
 
+  end
+
+  private
+
+  def vtuber_params
+    params.require(:vtuber).permit(:name,:belonging_office,:fan_name,:debut_day,:registered_person,:profile,:image)
   end
 end

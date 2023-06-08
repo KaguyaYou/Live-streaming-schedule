@@ -3,8 +3,4 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
-// require("turbolinks").start()  // コメントアウト
-require("@rails/activestorage").start()
-require("channels")
-require('./preview')
+

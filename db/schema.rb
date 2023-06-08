@@ -65,7 +65,12 @@ ActiveRecord::Schema.define(version: 2023_06_05_023348) do
 
   create_table "vtubers", force: :cascade do |t|
     t.string "name"
-    t.text "body"
+    t.integer "user_id"
+    t.string "belonging_office"
+    t.string "fan_name"
+    t.date "debut_day"
+    t.integer "registered_person"
+    t.string "profile"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

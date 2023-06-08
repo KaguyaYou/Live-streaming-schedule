@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to:"homes#top"
 
-  resources :vtubers, only: [:index,:show,:edit,:create,:destroy,:update] do
+  resources :vtubers do
     resource :favorites,only:[:create,:destroy]
     resources :vtuber_comments,only:[:create,:destroy]
   end

@@ -4,13 +4,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @books = @user.books
-    @book = Book.new
+    @vtubers = @user.vtubers
+    @vtuber = Vtuber.new
   end
 
   def index
     @users = User.all
-    @book = Book.new
+    @vtuber = Vtuber.new
   end
 
   def edit
@@ -38,11 +38,5 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-  
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.name == "guestuser"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
-    end
-  end  
+
 end

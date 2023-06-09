@@ -1,1 +1,64 @@
-<%= render 'vtubers/form' , vtuber: @vtuber %>
+<%= form_with model: vtuber, local:true do |f| %>
+  <div class="form-group">
+    <%= f.label :"名前" %>
+    <%= f.text_area :name, class: 'form-control vtuber_name' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.file_field :image, accept: "image/*", id: 'image-upload' %>
+  </div>
+
+  <div class="form-group">
+    <%= image_tag '', id: 'image-preview', class: 'preview-image' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :"所属事務所" %>
+    <%= f.text_area :belonging_office, class: 'form-control vtuber_belonging_office' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :"愛称" %>
+    <%= f.text_area :fan_name, class: 'form-control vtuber_fan_name' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :"デビュー日" %>
+    <%= f.date_select :debut_day, class: 'form-control vtuber_debut_day' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :"登録者数" %>
+    <%= f.number_field :registered_person, class: 'form-control vtuber_registered_person' %>人
+  </div>
+
+  <div class="form-group">
+    <%= f.label :"プロフィール" %>
+    <%= f.text_area :profile, class: 'form-control vtuber_profile' %>
+  </div>
+
+  <%= f.submit '投稿' %>
+
+<% end %>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('image-upload');
+    const preview = document.getElementById('image-preview');
+    preview.setAttribute('style','width: 200px; object-fit: cover;')
+
+  input.addEventListener('change', () => {
+    const file = input.files[0];
+    const reader = new FileReader();
+
+  reader.onload = () => {
+    preview.src = reader.result;
+    }
+
+    if (file) {
+      reader.readAsDataURL(file);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,60 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-14'>
+      <div class='col-md-14 offset-md-1'>
+  		<h2><%= @vtuber.name %></h2>
+  		<table class='table'>
+  		  <tr>
+  		    <td><% if @vtuber.image.attached? %>
+              <%= image_tag @vtuber.image, size: "200x250" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "200x200" %>
+            <% end %></td>
+  		  </tr>
+        <tr>
+          <td><%= @vtuber.belonging_office %></td>
+        </tr>
+        <tr>
+          <td><%= @vtuber.fan_name %></td>
+        </tr>
+        <tr>
+          <td><%= @vtuber.debut_day %></td>
+        </tr>
+        <tr>
+          <td><%= @vtuber.registered_person %>人</td>
+        </tr>
+        <tr>
+          <td><%= @vtuber.profile %></td>
+        </tr>
+        <tr>
+          <td><%= link_to(@vtuber.user) do %>
+            <%= @vtuber.user.name %>
+          <!--%= image_tag @vtuber.user.get_profile_image, size:"100x100" %><br>-->
+          </td>
+        </tr>
+
+        <% end %>
+
+
+
+          <!--<td class=%= "favorite-"+ @vtuber.id.to_s %> >-->
+            <!--%= render 'favorites/btn', vtuber: @vtuber %>-->
+          <!--</td>-->
+          <!--<td>%= render 'book_comments/counter', book: @book %></td>-->
+
+
+
+      </table>
+      <div class="position-absolute top-50 start-50">
+        <% if @vtuber.user == current_user %>
+        <%= link_to 'Edit', edit_vtuber_path(@vtuber), class: "btn btn-sm btn-success" %>
+        <%= link_to 'Destroy', @vtuber, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+      <% end %>
+      </div>
+      <!--%= render "book_comments/index", book: @book %>-->
+      <!--%= render "book_comments/form", book: @book, book_comment: @book_comment %>-->
+
+    </div>
+
+  </div>
+</div>

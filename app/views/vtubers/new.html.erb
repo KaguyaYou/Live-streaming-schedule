@@ -6,72 +6,7 @@
         <h2>User info</h2>
           <!--%= render 'info', user: current_user %>-->
         <h2 class="mt-8">Who's vtuber?</h2>
-        <%= form_with model: @vtuber, local:true do |f| %>
-          <div class="form-group">
-            <%= f.label :name %>
-            <%= f.text_area :name, class: 'form-control vtuber_name' %>
-          </div>
-
-          <div class="form-group">
-            <%= f.file_field :image, accept: "image/jpg", id: 'image-upload' %>
-          </div>
-
-          <div class="form-group">
-            <%= image_tag '', id: 'image-preview', class: 'preview-image' %>
-          </div>
-
-
-
-          <div class="form-group">
-            <%= f.label :belonging_office %>
-            <%= f.text_area :belonging_office, class: 'form-control vtuber_belonging_office' %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :fan_name %>
-            <%= f.text_area :fan_name, class: 'form-control vtuber_fan_name' %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :debut_day %>
-            <%= f.date_select :debut_day, class: 'form-control vtuber_debut_day' %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :registered_person %>
-            <%= f.text_area :registered_person, class: 'form-control vtuber_registered_person' %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :profile %>
-            <%= f.text_area :profile, class: 'form-control vtuber_profile' %>
-          </div>
-
-          <%= f.submit '投稿' %>
-
-          <% end %>
-
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-              const input = document.getElementById('image-upload');
-              const preview = document.getElementById('image-preview');
-              preview.setAttribute('style','width: 200px; object-fit: cover;')
-
-              input.addEventListener('change', () => {
-                const file = input.files[0];
-                const reader = new FileReader();
-
-                reader.onload = () => {
-                  preview.src = reader.result;
-                }
-
-                if (file) {
-                  reader.readAsDataURL(file);
-                }
-              });
-            });
-        </script>
+        <%= render 'vtubers/form' , vtuber: @vtuber %>
       </div>
     </div>
   </div>

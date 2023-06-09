@@ -1,4 +1,5 @@
 class VtubersController < ApplicationController
+  
   def index
     @total_vtubers =Vtuber.all
     @vtubers = Vtuber.all.page(params[:page]).per(8)
@@ -20,7 +21,8 @@ class VtubersController < ApplicationController
   end
 
   def create
-    @vtuber = Vtuber.new(vtuber_params)
+
+    @vtuber = current_user.vtubers.new(vtuber_params)
     if @vtuber.save
       flash[:notice]
       redirect_to vtubers_path
@@ -30,16 +32,24 @@ class VtubersController < ApplicationController
   end
 
   def destroy
-
+    @vtuber = Vtuber.find(params[:id])
+    @vtuber.destroy
+    redirect_to "/vtubers"
   end
 
   def update
-
+    @vtuber = Vtuber.find(params[:id])
+    if @vtuber.update(vtuber_params)
+      flash[:notice] = "You have created vtuber successfully."
+      redirect_to vtuber_path(@vtuber.id)
+    else
+      render "edit"
+    end
   end
 
   private
 
   def vtuber_params
-    params.require(:vtuber).permit(:name,:belonging_office,:fan_name,:debut_day,:registered_person,:profile,:image)
+    params.require(:vtuber).permit(:name,:belonging_office,:fan_name,:debut_day,:registered_person,:profile,:image,:user_id)
   end
 end

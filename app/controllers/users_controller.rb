@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @vtuber = Vtuber.new
   end
 
   def edit

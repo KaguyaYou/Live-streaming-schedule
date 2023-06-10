@@ -1,0 +1,26 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>名前</th>
+      <th>所属事務所</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% vtubers.each do |vtuber| %>
+      <tr>
+        <td><%= link_to vtuber_path(vtuber) do %>
+          <%= image_tag vtuber.image, size:'50x50' %>
+          <% end %>
+        </td>
+        <td><%= link_to vtuber.name,vtuber, class: "vtuber_#{vtuber.id}" %></td>
+        <td><%= vtuber.belonging_office %></td>
+        <!--<td class=%= "favorite-#{book.id}" %> >-->
+        <!--  %= render "favorites/btn", book: book %>-->
+        <!--</td>-->
+        <!--<td>%= render 'book_comments/counter', book: book %></td>-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>

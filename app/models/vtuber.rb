@@ -1,6 +1,6 @@
 class Vtuber < ApplicationRecord
   belongs_to:user
-  # has_many :favorites,deoendent: :destroy
+  has_many :favorites,dependent: :destroy
   # has_many :vtuber_comments,deoendent: :destroy
   # has_many :favorites,deoendent: :destroy
   # has_many :favorited_users,through: :favorites,source: :user
@@ -18,6 +18,6 @@ class Vtuber < ApplicationRecord
 
 
   def favorited_by?(user)
-   favorites.exists?(user?id:user.id)
+   favorites.exists?(user_id: user.id)
   end
 end

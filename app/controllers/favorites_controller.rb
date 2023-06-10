@@ -7,8 +7,8 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    book =Book.find(params[:book_id])
-    @favorite =current_user.favorites.find_by(book_id: book.id)
+    vtuber=Vtuber.find(params[:vtuber_id])
+    @favorite =current_user.favorites.find_by(vtuber_id: vtuber.id)
     @favorite.destroy
     render 'create_btn'
   end

@@ -29,10 +29,17 @@
         <tr>
           <td><%= link_to(@vtuber.user) do %>
             <%= @vtuber.user.name %>
-          <!--%= image_tag @vtuber.user.get_profile_image, size:"100x100" %><br>-->
+          <%= image_tag @vtuber.user.get_profile_image(100,100) %><br>
           </td>
         </tr>
-
+        <tr>
+        <td class=<%= "favorite-"+ @vtuber.id.to_s %> >
+          <%= render 'favorites/btn', vtuber: @vtuber %>
+        </td>
+        </tr>
+        <tr>
+          <td><%= @vtuber.profile %></td>
+        </tr>
         <% end %>
 
 

@@ -1,5 +1,6 @@
 class VtubersController < ApplicationController
-  
+  before_action :authenticate_user!, only:[:new, :create]
+
   def index
     @total_vtubers =Vtuber.all
     @vtubers = Vtuber.all.page(params[:page]).per(8)
@@ -50,6 +51,6 @@ class VtubersController < ApplicationController
   private
 
   def vtuber_params
-    params.require(:vtuber).permit(:name,:belonging_office,:fan_name,:debut_day,:registered_person,:profile,:image,:user_id)
+    params.require(:vtuber).permit(:name,:belonging_office,:fan_name,:debut_day,:registered_person,:profile,:image,:user_id,:category)
   end
 end

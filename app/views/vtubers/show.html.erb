@@ -1,6 +1,6 @@
-<div class='container'>
+<div class='container-fluid'>
   <div class='row'>
-    <div class='col-md-14'>
+    <div class='col-md-3 col-mr-4'>
       <div class='col-md-14 offset-md-1'>
   		<h2><%= @vtuber.name %></h2>
   		<table class='table'>
@@ -29,27 +29,22 @@
         <tr>
           <td><%= link_to(@vtuber.user) do %>
             <%= @vtuber.user.name %>
-          <%= image_tag @vtuber.user.get_profile_image(100,100) %><br>
+            <%= image_tag @vtuber.user.get_profile_image(100,100) %>
           </td>
         </tr>
         <tr>
-        <td class=<%= "favorite-"+ @vtuber.id.to_s %> >
-          <%= render 'favorites/btn', vtuber: @vtuber %>
-        </td>
+          <td class=<%= "favorite-"+ @vtuber.id.to_s %> >
+            <%= render 'favorites/btn', vtuber: @vtuber %>
+            <%= render 'vtuber_comments/counter', vtuber: @vtuber %>
+          </td>
+        </tr>
+        <tr>
+          
         </tr>
         <tr>
           <td><%= @vtuber.profile %></td>
         </tr>
         <% end %>
-
-
-
-          <!--<td class=%= "favorite-"+ @vtuber.id.to_s %> >-->
-            <!--%= render 'favorites/btn', vtuber: @vtuber %>-->
-          <!--</td>-->
-          <!--<td>%= render 'book_comments/counter', book: @book %></td>-->
-
-
 
       </table>
       <div class="position-absolute top-50 start-50">
@@ -58,10 +53,20 @@
         <%= link_to 'Destroy', @vtuber, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
       <% end %>
       </div>
-      <!--%= render "book_comments/index", book: @book %>-->
-      <!--%= render "book_comments/form", book: @book, book_comment: @book_comment %>-->
-
     </div>
 
+  </div>
+
+  <div class='col-md-5 col-mr-4'>
+  <%= render "vtuber_comments/index", vtuber: @vtuber %>
+  </div>
+  <div class='col-md-4 col-mr-4'>
+    <table class="table">
+      <tr>
+        <td>
+          <%= render "vtuber_comments/form", vtuber: @vtuber, vtuber_comment: @vtuber_comment %>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>

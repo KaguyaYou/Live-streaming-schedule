@@ -1,7 +1,7 @@
 class Vtuber < ApplicationRecord
   belongs_to:user
   has_many :favorites,dependent: :destroy
-  # has_many :vtuber_comments,deoendent: :destroy
+  has_many :vtuber_comments, dependent: :destroy
   # has_many :favorites,deoendent: :destroy
   # has_many :favorited_users,through: :favorites,source: :user
   # has_many :week_favorites, -> { where(created_at: ((Time.current.at_end _of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day)) }, class_name: 'Favorite'
@@ -19,5 +19,21 @@ class Vtuber < ApplicationRecord
 
   def favorited_by?(user)
    favorites.exists?(user_id: user.id)
+  end
+
+  validates :category, presence: true
+
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @vtuber = Vtuber.where("title LIKE?","#{word}")
+    elsif search == "forward_match"
+      @vtuber = Vtuber.where("title LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @vtuber = Vtuber.where("title LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @vtuber = Vtuber.where("title LIKE?","%#{word}%")
+    else
+      @vtuber = Vtuber.all
+    end
   end
 end

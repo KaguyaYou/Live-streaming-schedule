@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# puts "------------vtuber create-----------"
+
+# vtuber1 = Vtuber.create!(
+#   name: "霜月 美雪（しもつき みゆき）"
+#   belonging_office: "koon"
+  
+
+  
+  # )

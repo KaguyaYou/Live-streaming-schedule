@@ -1,7 +1,5 @@
 class VtuberComment < ApplicationRecord
-   
-  # t.text :comment
-  # t.integer :user_id
-  # t.integer :vtuber_id
-  
+  belongs_to :user
+  belongs_to :vtuber
+
 end

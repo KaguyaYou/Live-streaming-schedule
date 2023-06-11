@@ -1,0 +1,20 @@
+<table>
+      <tbody>
+        <% vtuber.vtuber_comments.each do |vtuber_comment| %>
+          <tr>
+            <td>
+              <%= link_to user_path(vtuber_comment.user) do %>
+                <%= image_tag vtuber_comment.user.get_profile_image(100,100) %>
+                <%= vtuber_comment.user.name %>
+              <% end %>
+            </td>
+            <td><%= vtuber_comment.created_at.strftime('%Y/%m/%d') %><%= vtuber_comment.comment %></td>
+            <td>
+              <% if vtuber_comment.user == current_user %>
+                <%= link_to "削除", vtuber_vtuber_comment_path(vtuber_comment.vtuber, vtuber_comment), method: :delete,class: "btn btn-sm btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

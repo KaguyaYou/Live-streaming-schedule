@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :vtubers, dependent: :destroy
+  has_many :favorites,dependent: :destroy
+  has_many :vtuber_comments, dependent: :destroy
+
 
   has_one_attached :profile_image
 
@@ -15,10 +18,20 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-  has_many :favorites,dependent: :destroy
-  # has_many :book_comments,dependent: :destroy
-  # has_many :favorites, dependent: :destroy
-  # has_many :favorited_books, through: :favorites, source: :book
+
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @user = User.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @user = User.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?","%#{word}%")
+    else
+      @user = User.all
+    end
+  end
 
 
 end

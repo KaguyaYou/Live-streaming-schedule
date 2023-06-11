@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
       <h2 class="d-inline-block">Vtuber一覧</h2>
@@ -19,7 +19,10 @@
           </div>
         <% end %>
         <div class="card-body" style="margin-bottom: 10px;">
-          <p class="card-text"><%= vtuber.name %></p>
+          <p class="card-text">
+            <%= vtuber.name %>
+            <p><%= link_to "#{vtuber.vtuber_comments.count} コメント", vtuber_path(vtuber.id) %></p>
+          </p>
         </div>
       </div>
     </div>

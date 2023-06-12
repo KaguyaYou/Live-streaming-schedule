@@ -1,0 +1,11 @@
+<footer>
+  <div class='container mt-5'>
+  	<div class='row'>
+    	<div class='mx-auto'>
+    		<% if current_end_user.try(:admin?) %>
+          <%= link_to '管理者ログイン', rails_admin_path %>
+        <% end %>
+    	</div>
+    </div>
+  </div>
+</footer>

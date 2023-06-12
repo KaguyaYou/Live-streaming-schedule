@@ -14,14 +14,23 @@
         <% @vtubers.first(4).each do |vtuber| %>
           <div class="col-md-3 col-sm-6">
             <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
-              <%= link_to vtuber_path(vtuber) do %>
-                <div class="img-wrap" style="margin-bottom: 10px;">
-                  <%= image_tag(vtuber.image, width: "200px", height: "200px", fallback: "no_image.jpg") %>
-                </div>
+              <% if vtuber.image.attached? %>
+                <%= link_to vtuber_path(vtuber) do %>
+                  <div class="img-wrap" style="margin-bottom: 10px;">
+                    <%= image_tag(vtuber.image, width: "200px", height: "200px", fallback: "no_image.jpg") %>
+                  </div>
+                <% end %>
+              <% else %>
+                <!-- 画像が添付されていない場合の表示 -->
+                <%= link_to vtuber_path(vtuber) do %>
+                  <div class="img-wrap" style="margin-bottom: 10px;">
+                    <%= image_tag("no_image.jpg", width: "200px", height: "200px") %>
+                  </div>
+                <% end %>
               <% end %>
-              <div class="card-body">
-                <p class="card-text"><%= vtuber.name %></p>
-              </div>
+                <div class="card-body">
+                  <p class="card-text"><%= vtuber.name %></p>
+                </div>
             </div>
           </div>
         <% end %>

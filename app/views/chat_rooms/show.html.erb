@@ -1,12 +1,39 @@
-<h1><%= @chat_room.name %></h1>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <h2><%= @chat_room.name %></h2>
 
-<ul>
-  <% @chat_room.messages.each do |message| %>
-    <li><%= message.content %> - <%= message.user.name %></li>
-  <% end %>
-</ul>
+            <table class="message table">
+              <thead>
+                <tr>
+                   <th style="text-align: left; font-size: 20px;"><%= @chat_room.name %></th>
+                   <th style="text-align: right; font-size: 20px;"><%= message.user.name %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @chat_room.messages.each do |message| %>
+                  <% if chat.user_id == current_user.id %>
+                    <tr class="card">
+                      <th class="card-body bg-warning">
+                        <p style="text-align: right;"><%= message.content %> - <%= message.current.user.name %></p>
+                      </th>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <th></th>
+                      <th class="card">
+                        <p style="text-align: left;"><%= message.content %> - <%= message.user.name %></p>
+                      </th>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
 
-<%= form_with(model: [@chat_room, @chat_room.messages.build]) do |form| %>
-  <%= form.text_area :content %>
-  <%= form.submit "Send" %>
-<% end %>
+            <%= form_with(model: [@chat_room, @chat_room.messages.build]) do |form| %>
+              <%= form.text_area :content %>
+              <%= form.submit "Send" %>
+            <% end %>
+        </div>
+    </div>
+</div>

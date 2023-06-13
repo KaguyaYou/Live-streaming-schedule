@@ -1,0 +1,7 @@
+<h1>New Chat Room</h1>
+
+<%= form_with(model: @chat_room, url: create_chat_room_chat_rooms_path) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.submit "Create" %>
+<% end %>

@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :vtubers, dependent: :destroy
   has_many :favorites,dependent: :destroy
   has_many :vtuber_comments, dependent: :destroy
-
+  has_many :messages
+  has_and_belongs_to_many :chat_rooms
 
   has_one_attached :profile_image
 

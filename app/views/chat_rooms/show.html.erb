@@ -1,0 +1,12 @@
+<h1><%= @chat_room.name %></h1>
+
+<ul>
+  <% @chat_room.messages.each do |message| %>
+    <li><%= message.content %> - <%= message.user.name %></li>
+  <% end %>
+</ul>
+
+<%= form_with(model: [@chat_room, @chat_room.messages.build]) do |form| %>
+  <%= form.text_area :content %>
+  <%= form.submit "Send" %>
+<% end %>

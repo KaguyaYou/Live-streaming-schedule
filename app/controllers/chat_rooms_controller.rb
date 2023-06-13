@@ -1,39 +1,57 @@
 class ChatRoomsController < ApplicationController
-  def index
-    @chat_rooms = ChatRoom.all
-  end
+   before_action :set_group, only: [:edit, :update]
 
-  def show
-    @chat_room = ChatRoom.find(params[:id])
-  end
-
-  def new
-    @chat_room = ChatRoom.new
-  end
-
-  def create
-    @chat_room = ChatRoom.new(chat_room_params)
-
-    if @chat_room.save
-      redirect_to @chat_room, notice: 'Chat room created.'
-    else
-      render :new
+    def index
+        @group_lists = Group.all
+        @group_joining = GroupUser.where(user_id: current_user.id)
+        @group_lists_none = "グループに参加していません。"
     end
-  end
 
-  def create_chat_room
-    @chat_room = ChatRoom.new(chat_room_params)
-
-    if @chat_room.save
-      redirect_to chat_rooms_path, notice: 'Chat room created.'
-    else
-      redirect_to chat_rooms_path, alert: 'Failed to create chat room.'
+    def new
+        @group = Group.new
+        @group.users << current_user
     end
-  end
 
-  private
+    def create
+        @group = Group.new(group_params)
+        if @group.save
+            redirect_to groups_url, notice: 'グループを作成しました。'
+        else
+            render :new
+        end
+    end
 
-  def chat_room_params
-    params.require(:chat_room).permit(:name)
-  end
+    def show
+        @group = Group.find(params[:id])
+    end
+
+    def edit
+        @group = Group.find(params[:id])
+    end
+
+    def update
+        @group = Group.find(params[:id])
+        if @group.update(group_params)
+            redirect_to groups_path, notice: 'グループを更新しました。'
+        else
+            render :edit
+        end
+    end
+
+    def destroy
+        delete_group = Group.find(params[:id])
+        if delete_group.destroy
+            redirect_to groups_path, notice: 'グループを削除しました。'
+        end
+    end
+
+    private
+        def set_group
+            @group = Group.find(params[:id])
+        end
+
+        def group_params
+            params.require(:group).permit(:name, user_ids: [])
+        end
+
 end

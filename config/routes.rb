@@ -8,12 +8,9 @@ Rails.application.routes.draw do
     resources :vtuber_comments,only:[:create,:destroy]
   end
 
-  resources :chat_rooms do
-    resources :messages
-    collection do
-      post 'create_chat_room'
-    end
-  end
+  resources :chat_rooms, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+
+
   resources :users, only: [:index,:show,:edit,:update]
 
   get 'tagsearches/search', to: 'tagsearches#search'

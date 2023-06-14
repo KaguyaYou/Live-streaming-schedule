@@ -1,0 +1,64 @@
+<!--<head>-->
+<!--  <script>-->
+<!--    %= stylesheet_pack_tag 'groups', media: 'all', 'data-turbolinks-track': 'reload' %>-->
+<!--  </script>-->
+<!--</head>-->
+<div class="container-xl-12">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="group-show">
+        <div class="show-group-chat-back">
+          <span class="group-show-group-chat-back">
+            <%= link_to groups_path do %>
+              ＜
+            <% end %>
+          </span>
+        </div>
+
+        <div class="chat-group-show-talk">
+          <div class="chat-group-show-talk__head">
+            <%= @group.name %>(<%= @group.user_ids.count %>)
+          </div>
+          <div class="chat-group-show-talk__body">
+            <% @chats.each do |chat| %>
+              <% if chat.user_id == current_user.id %>
+                <div class="chat-group-show-talk__fukidashi chat-group-show-talk__fukidashi--right">
+                  <div class="chat-group-show-talk__icon">
+                    <% if chat.user && chat.user.profile_image.attached? %>
+                      <%= image_tag(chat.user.profile_image) %>
+                    <% end %>
+                  </div>
+                  <div class="chat-group-show-talk__text">
+                    <span><%= chat.user.name %></span>
+                    <p><%= chat.message %></p>
+                  </div>
+                </div>
+              <% else %>
+                <div class="chat-group-show-talk__fukidashi chat-group-show-talk__fukidashi--left">
+                  <div class="chat-group-show-talk__icon">
+                    <% if chat.user && chat.user.profile_image.attached? %>
+                      <%= image_tag(chat.user.profile_image) %>
+                    <% end %>
+                  </div>
+                  <div class="chat-group-show-talk__text">
+                    <span><%= chat.user.name %></span>
+                    <p><%= chat.message %></p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <%= form_with model: @chat, url: group_chats_path(group_id: @group.id), local: true  do |f| %>
+    <%= f.text_field :message %>
+    <%= f.hidden_field :room_id %>
+    <%= f.submit "SEND", class: "btn btn-sm btn-success chat-btn"%>
+  <% end %>
+</div>
+
+

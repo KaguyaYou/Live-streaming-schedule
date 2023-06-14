@@ -1,0 +1,4 @@
+<%= form_with(model: @chat, url: groups_path(@group), local: true) do |f| %>
+  <%= f.text_area :content, class: 'form-control', placeholder: 'メッセージを入力してください' %>
+  <%= f.submit '送信', class: 'btn btn-primary' %>
+<% end %>

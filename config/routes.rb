@@ -8,8 +8,9 @@ Rails.application.routes.draw do
     resources :vtuber_comments,only:[:create,:destroy]
   end
 
-  resources :chat_rooms, only: [:index, :new, :create, :show, :edit, :update, :destroy]
-
+  resources :groups, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+    resources :chats, only: [:create]
+  end
 
   resources :users, only: [:index,:show,:edit,:update]
 

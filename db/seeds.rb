@@ -11,16 +11,20 @@
 
 puts "------------vtuber create-----------"
 
-  vtuber = Vtuber.create!(
+#   vtuber = Vtuber.create!(
 
-  name: "霜月 美雪（しもつき みゆき）",
-  belonging_office: "雪月花",
-  user_id: "1",
-  fan_name: "みゆき",
-  debut_day: '2023/06/08',
-  registered_person: '10000',
-  profile: "こんにちは、よろしくお願い致します。",
-  category: 'koon'
-)
-  vtuber.image.attach(io: File.open('./app/assets/images/Shimotsuki.jpg'), filename: 'Shimotsuki.jpg')
-  vtuber.save!
+#   name: "霜月 美雪（しもつき みゆき）",
+#   belonging_office: "雪月花",
+#   user_id: "1",
+#   fan_name: "みゆき",
+#   debut_day: '2023/06/08',
+#   registered_person: '10000',
+#   profile: "こんにちは、よろしくお願い致します。",
+#   category: 'koon'
+# )
+#   vtuber.image.attach(io: File.open('./app/assets/images/Shimotsuki.jpg'), filename: 'Shimotsuki.jpg')
+#   vtuber.save!
+
+
+
+puts "------end---------"

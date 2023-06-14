@@ -1,7 +1,6 @@
-@use '~bootstrap/scss/bootstrap';
-@use '~@fortawesome/fontawesome-free/scss/fontawesome';
-
-
+// Place all the styles related to the groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
 $borderColor: #A0C3D2; //ボーダーの色
 $headColor: #EAE0DA; //タイトル背景色
 $bodyColor: #EAC7C7; // 背景色
@@ -21,7 +20,7 @@ img {
   height: auto;
 }
 // ここから
-.chat-group-show-talk {
+.c-talk {
   border: 5px solid $borderColor;
   // タイトル
   &__head {

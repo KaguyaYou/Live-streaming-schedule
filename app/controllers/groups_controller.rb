@@ -1,5 +1,6 @@
-class ChatRoomsController < ApplicationController
-   before_action :set_group, only: [:edit, :update]
+class GroupsController < ApplicationController
+  before_action :set_group, only: [:edit, :update]
+  before_action :authenticate_user!
 
     def index
         @group_lists = Group.all
@@ -23,6 +24,8 @@ class ChatRoomsController < ApplicationController
 
     def show
         @group = Group.find(params[:id])
+        @chats = @group.chats.includes(:user)
+        @chat = Chat.new
     end
 
     def edit
@@ -53,5 +56,4 @@ class ChatRoomsController < ApplicationController
         def group_params
             params.require(:group).permit(:name, user_ids: [])
         end
-
 end

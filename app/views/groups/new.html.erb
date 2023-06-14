@@ -1,0 +1,12 @@
+<h1>Create World</h1>
+
+<%= form_with(model: @group, local: true) do |f| %>
+  <div class="group-new-form">
+    <div class="gtoup-new-form-name">
+      <%= f.label :name, 'あなたの推しの名前は？' %>
+      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.collection_check_boxes :user_ids, User.all, :id, :name %>
+    </div>
+    <%= f.submit 'Create Ready？', class: "btn btn-primary" %>
+  </div>
+<% end %>

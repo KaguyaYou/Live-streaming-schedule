@@ -1,5 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
-@use '~@fortawesome/fontawesome-free/scss/fontawesome';
+
 
 
 $borderColor: #A0C3D2; //ボーダーの色
@@ -9,13 +9,13 @@ $textColor: #333333; // 吹き出しの色
 $textBgColor: #EAE0DA; // 吹き出しの背景色
 
 // reset & base
-*,::before,::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Rounded Mplus 1c";
-}
-img {
+// *,::before,::after {
+//   box-sizing: border-box;
+//   margin: 0;
+//   padding: 0;
+//   font-family: "Rounded Mplus 1c";
+// }
+.chat_img {
   width: auto;
   max-width: 100%;
   height: auto;

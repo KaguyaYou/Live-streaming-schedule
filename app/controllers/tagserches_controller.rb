@@ -1,8 +1,8 @@
 class TagserchesController < ApplicationController
   def search
-    @model = Vtuber  #search機能とは関係なし
+    @model = Vtuber
     @word = params[:content]
-    @vtubers = Vtuber.where("category LIKE?","%#{@word}%")
+    @vtubers = Vtuber.where("category LIKE ?", "%#{@word}%")
     render "tagsearches/tagsearch"
   end
 end

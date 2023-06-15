@@ -37,12 +37,15 @@
     <%= f.text_area :profile, class: 'form-control vtuber_profile' %>
   </div>
 
-  <div class="form-group">
-    <label>カテゴリ</label>
-    <%= f.text_field :category,class: 'form-control vtuber_category' %>
+  <div class="field">
+    <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
+    <%= f.text_field :name,value: @tag_list,class:"form-control"%>
   </div>
 
-  <%= f.submit '投稿' %>
+　<div class="field" style="margin:20px 0;">
+    <%= f.submit "投稿",class:"btn btn-outline-primary btn-block" %>
+  </div>
+
 
 <% end %>
 

@@ -21,9 +21,21 @@
         <div class="card-body" style="margin-bottom: 10px;">
           <p class="card-text">
             <%= vtuber.name %>
+            <p class=<%= "favorite-#{vtuber.id}" %> >
+             <%= render "favorites/btn", vtuber: vtuber %>
+             </p>
             <p><%= link_to "#{vtuber.vtuber_comments.count} コメント", vtuber_path(vtuber.id) %></p>
           </p>
         </div>
+        <!--タグリスト-->
+        <% @tag_list.each do |list|%>
+          <%=list.name %>
+          <%="(#{list.vtubers.count})" %>
+        <% end %>
+
+        <!--投稿一覧画面で投稿に紐づくタグを表示-->
+        <% @posts.each do |post| %>
+        <i class="fas fa-tag"><%= vtuber.tags.map(&:name).join(', ') %></i>
       </div>
     </div>
     <% end %>

@@ -27,24 +27,24 @@
           <td><%= @vtuber.profile %></td>
         </tr>
         <tr>
+          <td><% @post_tags.each do |tag| %>
+                <%=tag.name%><%="(#{tag.posts.count})" %>
+              <% end %>
+          </td>
+        </tr>
+        <tr>
           <td><%= link_to(@vtuber.user) do %>
             <%= @vtuber.user.name %>
             <%= image_tag @vtuber.user.get_profile_image(100,100) %>
           </td>
         </tr>
         <tr>
-          <td class=<%= "favorite-"+ @vtuber.id.to_s %> >
-            <%= render 'favorites/btn', vtuber: @vtuber %>
+          <td><%= link_to "いいねした投稿者", favorites_user_path(current_user) %>
             <%= render 'vtuber_comments/counter', vtuber: @vtuber %>
           </td>
         </tr>
-        <tr>
-          
-        </tr>
-        <tr>
-          <td><%= @vtuber.profile %></td>
-        </tr>
-        <% end %>
+
+          <% end %>
 
       </table>
       <div class="position-absolute top-50 start-50">

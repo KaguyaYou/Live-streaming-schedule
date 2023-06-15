@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     resources :chats, only: [:create]
   end
 
-  resources :users, only: [:index,:show,:edit,:update]
+  resources :users, only: [:index,:show,:edit,:update] do
+    member do
+      get :favorites
+    end
+  end
 
   get 'tagsearches/search', to: 'tagsearches#search'
 

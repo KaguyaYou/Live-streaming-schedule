@@ -1,12 +1,13 @@
 class Vtuber < ApplicationRecord
-  belongs_to:user
-  has_many :favorites,dependent: :destroy
+  belongs_to :user
+  has_many :favorites, dependent: :destroy
   has_many :vtuber_comments, dependent: :destroy
-  # has_many :favorites,deoendent: :destroy
-  # has_many :favorited_users,through: :favorites,source: :user
-  # has_many :week_favorites, -> { where(created_at: ((Time.current.at_end _of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day)) }, class_name: 'Favorite'
-
+  has_many :vtubers_users, dependent: :destroy
+  has_many :favorite_users, through: :vtubers_users, source: :user
+  has_many :post_tags,dependent: :destroy
+  has_many :tags,through: :post_tags
   has_one_attached :image
+
 
   def get_image(width, height)
     unless get_image.attached?
@@ -18,7 +19,7 @@ class Vtuber < ApplicationRecord
 
 
   def favorited_by?(user)
-   favorites.exists?(user_id: user.id)
+   user.present? && favorites.exists?(user_id: user.id)
   end
 
   validates :category, presence: true

@@ -25,7 +25,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def favorites
+    @favorite_vtubers = current_user.favorite_vtubers
+    @vtuber = @favorite_vtubers.first
+  end
+
   private
+
+  def set_user
+    @user =User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)

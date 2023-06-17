@@ -1,0 +1,22 @@
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <% @vtubers.each do |vtuber| %>
+          <%=link_to vtuber_path(vtuber.id) do %>
+          <%= image_tag @vtuber.image, size: "200x250" %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <% @vtubers.each do |vtuber| %>
+          <%=link_to vtuber_path(vtuber.id) do %>
+          <%= vtuber.name.truncate(25) %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

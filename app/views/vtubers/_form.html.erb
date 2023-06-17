@@ -39,16 +39,33 @@
 
   <div class="field">
     <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
-    <%= f.text_field :name,value: @tag_list,class:"form-control"%>
+    <%= f.text_field :tag_name,value: @tag_list,class:"form-control"%>
   </div>
 
+  <div class="form-group row">
+    <%=f.label:"公開範囲",class:"col-sm-4"%>
+    <div style="padding-right:20px;">
+    <%= f.radio_button :status, "販売中",checked: true %>
+    <%= f.label :status, "公開", {value: :true, style: "display: inline-block;"} %></div>
+    <div style="padding-right:20px;">
+    <%= f.radio_button :status, :false %>
+    <%= f.label :status, "下書き保存", {value: :false, style: "display: inline-block;"} %></div>
+  </div>
+
+  
 　<div class="field" style="margin:20px 0;">
     <%= f.submit "投稿",class:"btn btn-outline-primary btn-block" %>
   </div>
 
-
-<% end %>
-
+  <% end %>
+   <% if vtuber.errors.any? %>
+    <%= vtuber.errors.count %>件のerrorが発生しました
+    <ul>
+      <% vtuber.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {

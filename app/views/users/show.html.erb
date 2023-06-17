@@ -8,6 +8,7 @@
     <div class='col-md-9 offset-md-1'>
       <h2>Vtubers</h2>
       <%= render 'vtubers/index',vtubers: @vtubers %>
+      <%=link_to "下書き一覧", confirm_user_path(@user)%>
     </div>
   </div>
 </div>

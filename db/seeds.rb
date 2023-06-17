@@ -9,7 +9,7 @@
 
 # puts "----------"
 
-puts "------------vtuber create-----------"
+# puts "------------vtuber1 create-----------"
 
 #   vtuber = Vtuber.create!(
 
@@ -20,11 +20,35 @@ puts "------------vtuber create-----------"
 #   debut_day: '2023/06/08',
 #   registered_person: '10000',
 #   profile: "こんにちは、よろしくお願い致します。",
-#   category: 'koon'
 # )
 #   vtuber.image.attach(io: File.open('./app/assets/images/Shimotsuki.jpg'), filename: 'Shimotsuki.jpg')
 #   vtuber.save!
 
+# puts "------------vtuber2 create-----------"
+
+#   vtuber = Vtuber.create!(
+
+#   name: "レイナ・ブラッドコート",
+#   belonging_office: "koon",
+#   user_id: "1",
+#   fan_name: "レイナ",
+#   debut_day: '2020/06/08',
+#   registered_person: '500000',
+#   profile: "こんにちは、よろしくお願い致します。",
+
+# )
+#   vtuber.image.attach(io: File.open('./app/assets/images/reina_bloodcoat.jpg'), filename: 'reina_bloodcoat.jpg')
+#   vtuber.save!
 
 
-puts "------end---------"
+
+# puts "------admin create--------"
+
+# User.create!(
+#   name: 'uta',
+#   email: 'admin@gmail.com',
+#   password: 'adminadmin',
+#   )
+
+
+# puts "------end---------"

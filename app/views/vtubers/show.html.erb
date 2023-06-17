@@ -27,8 +27,8 @@
           <td><%= @vtuber.profile %></td>
         </tr>
         <tr>
-          <td><% @post_tags.each do |tag| %>
-                <%=tag.name%><%="(#{tag.posts.count})" %>
+          <td><% @vtuber_tags.each do |tag| %>
+                <%=link_to tag.tag_name,search_tag_path(tag_id: tag.id)%><%="(#{tag.vtubers.count})" %>
               <% end %>
           </td>
         </tr>

@@ -3,7 +3,7 @@ class VtubersController < ApplicationController
 
   def index
     @total_vtubers =Vtuber.all
-    @vtubers = Vtuber.all.page(params[:page]).per(8)
+    @vtubers = Vtuber.where(status: :true).order(params[:sort]).page(params[:page]).per(8)
     @vtuber= Vtuber.new
     @tag_list = Tag.all
   end
@@ -22,44 +22,36 @@ class VtubersController < ApplicationController
   def edit
     @vtuber = Vtuber.find(params[:id])
     user = User.find(params[:id])
-    @tag_list=@vtuber.tags.pluck(:name).jpin(',')
+    @tag_list=@vtuber.tags.pluck(:name).join(',')
     unless user.id == current_user.id
       redirect_to vtuber_path
     end
   end
 
   def create
-    @vtuber =Vtuber.new(vtuber_params)
+    @vtuber =current_user.vtubers.new(vtuber_params.select{|k,v| k != "tag_name"})
     @vtuber.user_id = current_user.id
     #受け取った値を,で区切って配列にする
-    tag_list=params[:vtuber][:name].split(',')
+    tag_list=params[:vtuber][:tag_name].split(',')
     if @vtuber.save
       @vtuber.save_tag(tag_list)
+      # byebug
       redirect_to vtubers_path(@vtuber),notice: '投稿完了しました:)'
     else
       render :new
     end
   end
 
-  def save_tag(sent_tags)
-    #タグが存在していれば、タグの名前を配列として全て取得
-     current_tags = self.tags.pluck(:name) unless self.tags.nil?
-    # 現在取得したタグから送られてきたタグを除いてoldtagとする
-    old_tags = current_tags - sent_tags
-    # 送信されてきたタグから現在存在するタグを除いたタグをnewとする
-    new_tags = sent_tags - current_tags
 
-    # 古いタグを消す
-    old_tags.each do |old|
-      self.tags.delete　Tag.find_by(name: old)
-    end
+  def search_tag
+    #検索結果画面でもタグ一覧表示
+    @tag_list =Tag.all
+    #検索されたタグを受け取る
+    @tag = Tag.find(params[:tag_id])
+    @vtubers = @tag.vtubers.page(params[:page]).per(10)
 
-    # 新しいタグを保存
-    new_tags.each do |new|
-      new_vtuber_tag = Tag.find_or_create_by(name: new)
-      self.tags << new_vtuber_tag
-   end
   end
+
 
   def destroy
     @vtuber = Vtuber.find(params[:id])
@@ -68,19 +60,38 @@ class VtubersController < ApplicationController
   end
 
   def update
+    # vtuberのidもってくる
     @vtuber = Vtuber.find(params[:id])
-    tag_list=params[:vtuber][:name].split(',')
+    #入力されたタグを受け取る
+    tag_list=params[:vtuber].delete(:tag_name).split(',')
+    # もしvtuberの情報が更新されたら
     if @vtuber.update(vtuber_params)
-      @vtuber.save_tag(tag_list)
-      redirect_to vtuber_path(@vtuber.id),notice: '投稿完了しました:)'
+      # if params[:vtuber][:status]=="公開"
+        #このvtuber_idに紐づいていたタグを@oldに入れる
+        #古いタグの関連を取得
+         @vtuber.vtuber_tags.destroy_all
+
+        #新しいタグの関連を保存
+        @vtuber.tag.list = params[:vtuber][:tag_name].split(",").map(&:strip)
+        @vtuber.save
+
+        #古いタグBの関連を削除
+        # @old_relations.each do |relation|
+        #   relation.destroy
+        # end
+
+        redirect_to vtuber_path(@vtuber.id),notice: '投稿完了しました:)'
+      # else
+      #   redirect_to vtubers_path, notice: "下書きに登録しました"
+      # end
     else
-      render "edit"
+      render :edit
     end
   end
 
     private
 
   def vtuber_params
-    params.require(:vtuber).permit(:name,:belonging_office,:fan_name,:debut_day,:registered_person,:profile,:image,:user_id,:category)
+    params.require(:vtuber).permit(:name,:belonging_office,:fan_name,:debut_day,:registered_person,:profile,:image,:user_id,:status)
   end
 end

@@ -8,7 +8,7 @@ class CreateVtubers < ActiveRecord::Migration[6.1]
       t.date :debut_day
       t.integer :registered_person
       t.string :profile
-
+      t.boolean :status,default: true
       t.timestamps
     end
   end

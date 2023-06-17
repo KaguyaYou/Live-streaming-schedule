@@ -4,8 +4,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @vtubers = @user.vtubers
-    @vtuber = Vtuber.new
+    @vtubers= Vtuber.page(params[:page]).per(8)
+    @vtubers = Vtuber.where(status: true).order("created_at DESC").page(params[:page]).per(8)
+    # @vtubers = @user.vtubers
+    # @vtuber = Vtuber.new
+  end
+
+  def confirm
+    @user = User.find(params[:id])
+    @vtubers = @user.vtubers.where(status: false).order('created_at DESC').page(params[:page]).per(20)
+    @vtuber = Vtuber.find(params[:id])
   end
 
   def index

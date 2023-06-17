@@ -25,17 +25,18 @@
              <%= render "favorites/btn", vtuber: vtuber %>
              </p>
             <p><%= link_to "#{vtuber.vtuber_comments.count} コメント", vtuber_path(vtuber.id) %></p>
+            <p>
+              <!--タグリスト-->
+              <% @tag_list.each do |list|%>
+                <%=link_to list.tag_name,search_tag_path(tag_id: list.id) %>
+                <%="(#{list.vtubers.count})" %>
+              <% end %>
+
+              <!--投稿一覧画面で投稿に紐づくタグを表示-->
+              <i class="fas fa-tag"><%= vtuber.tags.map(&:tag_name).join(', ') %></i>
+            </p>
           </p>
         </div>
-        <!--タグリスト-->
-        <% @tag_list.each do |list|%>
-          <%=list.name %>
-          <%="(#{list.vtubers.count})" %>
-        <% end %>
-
-        <!--投稿一覧画面で投稿に紐づくタグを表示-->
-        <% @posts.each do |post| %>
-        <i class="fas fa-tag"><%= vtuber.tags.map(&:name).join(', ') %></i>
       </div>
     </div>
     <% end %>

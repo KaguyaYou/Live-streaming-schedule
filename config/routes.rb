@@ -15,10 +15,11 @@ Rails.application.routes.draw do
   resources :users, only: [:index,:show,:edit,:update] do
     member do
       get :favorites
+      get :confirm
     end
   end
 
-  get 'tagsearches/search', to: 'tagsearches#search'
+  get "search_tag"=>"vtubers#search_tag"
 
   get "search" => "searches#search"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

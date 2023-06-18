@@ -2,7 +2,6 @@ class Vtuber < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :vtuber_comments, dependent: :destroy
-  has_many :vtubers_users, dependent: :destroy
   has_many :favorite_users, through: :vtubers_users, source: :user
   has_many :vtuber_tags,dependent: :destroy
   has_many :tags, through: :vtuber_tags
@@ -20,7 +19,7 @@ class Vtuber < ApplicationRecord
   def save_tag(sent_tags)
     # タグが存在していれば、タグの名前を配列として全て取得
     # byebug
-    current_tags = self.tags.pluck(:name) unless self.tags.nil?
+    current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     # 現在取得したタグから送られてきたタグを除いてoldtagとする
     old_tags = current_tags - sent_tags
     # 送信されてきたタグから現在存在するタグを除いたタグをnewとする

@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+    <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/css/6-1-7.css">
 
   <script src="https://kit.fontawesome.com/a543b30540.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
@@ -16,7 +21,7 @@
     <%= render 'layouts/header' %>
       <main>
         <p id="notice"><%= notice %></p>
-        <div class="d-flex justyfy-content-center mb-2">
+        <div class="d-flex justyfy-content-center mb-6">
           <%= render 'searches/form' %>
         </div>
 

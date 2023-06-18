@@ -22,7 +22,7 @@ class VtubersController < ApplicationController
   def edit
     @vtuber = Vtuber.find(params[:id])
     user = User.find(params[:id])
-    @tag_list=@vtuber.tags.pluck(:name).join(',')
+    @tag_list=@vtuber.tags.pluck(:tag_name).join(',')
     unless user.id == current_user.id
       redirect_to vtuber_path
     end
@@ -63,27 +63,18 @@ class VtubersController < ApplicationController
     # vtuberのidもってくる
     @vtuber = Vtuber.find(params[:id])
     #入力されたタグを受け取る
-    tag_list=params[:vtuber].delete(:tag_name).split(',')
     # もしvtuberの情報が更新されたら
     if @vtuber.update(vtuber_params)
-      # if params[:vtuber][:status]=="公開"
-        #このvtuber_idに紐づいていたタグを@oldに入れる
+
         #古いタグの関連を取得
          @vtuber.vtuber_tags.destroy_all
 
         #新しいタグの関連を保存
-        @vtuber.tag.list = params[:vtuber][:tag_name].split(",").map(&:strip)
-        @vtuber.save
-
-        #古いタグBの関連を削除
-        # @old_relations.each do |relation|
-        #   relation.destroy
-        # end
+        tag_list = params[:vtuber][:tag_name].split(",").map(&:strip)
+        @vtuber.save_tag(tag_list)
 
         redirect_to vtuber_path(@vtuber.id),notice: '投稿完了しました:)'
-      # else
-      #   redirect_to vtubers_path, notice: "下書きに登録しました"
-      # end
+
     else
       render :edit
     end

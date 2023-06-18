@@ -16,7 +16,9 @@
       <% end %>
     </h6>
     <!--お気に入り、コメント数、投稿者は部分テンプレ-->
-      <div id="<%=vtuber.id %>"><%= render 'favorites/btn', vtuber: vtuber %></div>
+      <div id=<%="favorite-#{vtuber.id}" %>>
+        <%= render 'favorites/btn', vtuber: vtuber %>
+      </div>
   </div>
 </div>
 <% end %>

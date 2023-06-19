@@ -103,16 +103,16 @@ $textBgColor: #EAE0DA; // 吹き出しの背景色
 }
 
 
-//top画面の画像スライダー
+
 
 .slider {/*横幅94%で左右に余白を持たせて中央寄せ*/
     width:94%;
     margin:0 auto;
 }
 
-.slider .img-wrap {
+.slider img {
     width:60vw;/*スライダー内の画像を60vwにしてレスポンシブ化*/
-    height:100px;
+    height:auto;
 }
 
 .slider .slick-slide {
@@ -155,12 +155,12 @@ $textBgColor: #EAE0DA; // 吹き出しの背景色
 /*ドットナビゲーションの設定*/
 
 .slick-dots {
-    text-align:center;
+  text-align:center;
   margin:20px 0 0 0;
 }
 
 .slick-dots li {
-    display:inline-block;
+  display:inline-block;
   margin:0 5px;
 }
 
@@ -204,16 +204,3 @@ a:hover,
 a:active{
   text-decoration: none;
 }
-
-  // $('.slider').slick({
-  //   autoplay: true,//自動的に動き出すか。初期値はfalse。
-  //   infinite: true,//スライドをループさせるかどうか。初期値はtrue。
-  //   speed: 500,//スライドのスピード。初期値は300。
-  //   slidesToShow: 3,//スライドを画面に3枚見せる
-  //   slidesToScroll: 1,//1回のスクロールで1枚の写真を移動して見せる
-  //   prevArrow: '<div class="slick-prev"></div>',//矢印部分PreviewのHTMLを変更
-  //   nextArrow: '<div class="slick-next"></div>',//矢印部分NextのHTMLを変更
-  //   centerMode: true,//要素を中央ぞろえにする
-  //   variableWidth: true,//幅の違う画像の高さを揃えて表示
-  //   dots: true,//下部ドットナビゲーションの表示
-  // });

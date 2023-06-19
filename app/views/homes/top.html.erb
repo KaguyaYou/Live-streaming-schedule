@@ -8,9 +8,7 @@
         </div>
       </div>
     </div>
-    <div class="container mt-8">
       <h2>Vtuberリスト</h2>
-      <div class="row">
         <ul class="slider">
         <% @vtubers.first(4).each do |vtuber| %>
           <div class="col-md-3 col-sm-6">
@@ -18,14 +16,14 @@
               <% if vtuber.image.attached? %>
                 <%= link_to vtuber_path(vtuber) do %>
                   <div class="img-wrap" style="margin-bottom: 10px;">
-                    <%= image_tag(vtuber.image, width: "200px", height: "200px", fallback: "no_image.jpg") %>
+                    <%= image_tag(vtuber.image) %>
                   </div>
                 <% end %>
               <% else %>
                 <!-- 画像が添付されていない場合の表示 -->
                 <%= link_to vtuber_path(vtuber) do %>
                   <div class="img-wrap" style="margin-bottom: 10px;">
-                    <%= image_tag("no_image.jpg", width: "200px", height: "200px") %>
+                    <%= image_tag("no_image.jpg") %>
                   </div>
                 <% end %>
               <% end %>
@@ -37,9 +35,7 @@
         <% end %>
         <!--/slider--></ul>
         <p>使用したライブラリ：<a href="https://kenwheeler.github.io/slick/" target="_blank">https://kenwheeler.github.io/slick/</a></p>
-      </div>
       <div class="all-vtubers-show-button"><%= link_to "全てのVtuberをみる", vtubers_path %></div>
-    </div>
   </main>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

@@ -21,7 +21,7 @@ class VtubersController < ApplicationController
 
   def edit
     @vtuber = Vtuber.find(params[:id])
-    user = User.find(params[:id])
+    user = current_user
     @tag_list=@vtuber.tags.pluck(:tag_name).join(',')
     unless user.id == current_user.id
       redirect_to vtuber_path

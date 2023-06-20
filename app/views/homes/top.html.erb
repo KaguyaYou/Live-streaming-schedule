@@ -1,5 +1,5 @@
 
-<body>
+<body class="body body-bg">
   <main>
     <div class="container-fluid">
       <div class="row">
@@ -10,31 +10,21 @@
     </div>
       <h2>Vtuberリスト</h2>
         <ul class="slider">
-        <% @vtubers.first(4).each do |vtuber| %>
-          <div class="col-md-3 col-sm-6">
-            <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
-              <% if vtuber.image.attached? %>
-                <%= link_to vtuber_path(vtuber) do %>
-                  <div class="img-wrap" style="margin-bottom: 10px;">
-                    <%= image_tag(vtuber.image) %>
-                  </div>
+          <% @vtubers.each do |vtuber| %>
+            <li>
+              <%= link_to vtuber_path(vtuber) do %>
+                <% if vtuber.image.attached? %>
+                  <%= image_tag vtuber.image.variant(resize_to_limit: [1000, nil]), class:"slider" %>
+                <% else %>
+                  <%= image_tag("no_image.jpg") %> <!--画像が添付されていない場合の表示 -->
                 <% end %>
-              <% else %>
-                <!-- 画像が添付されていない場合の表示 -->
-                <%= link_to vtuber_path(vtuber) do %>
-                  <div class="img-wrap" style="margin-bottom: 10px;">
-                    <%= image_tag("no_image.jpg") %>
-                  </div>
-                <% end %>
+                <%= vtuber.name %>
               <% end %>
-                <div class="card-body">
-                  <p class="card-text"><%= vtuber.name %></p>
-                </div>
-            </div>
-          </div>
-        <% end %>
-        <!--/slider--></ul>
-        <p>使用したライブラリ：<a href="https://kenwheeler.github.io/slick/" target="_blank">https://kenwheeler.github.io/slick/</a></p>
+            </li>
+          <% end %>
+          <!--/slider-->
+        </ul>
+        <!--<p>使用したライブラリ：<a href="https://kenwheeler.github.io/slick/" target="_blank">https://kenwheeler.github.io/slick/</a></p>-->
       <div class="all-vtubers-show-button"><%= link_to "全てのVtuberをみる", vtubers_path %></div>
   </main>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

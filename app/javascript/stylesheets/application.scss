@@ -108,15 +108,17 @@ $textBgColor: #EAE0DA; // 吹き出しの背景色
 .slider {/*横幅94%で左右に余白を持たせて中央寄せ*/
     width:94%;
     margin:0 auto;
+    oveerflow: hidden;
 }
 
 .slider img {
-    width:60vw;/*スライダー内の画像を60vwにしてレスポンシブ化*/
+    width:30vw;/*スライダー内の画像を60vwにしてレスポンシブ化*/
     height:auto;
+    object-fit: cover;
 }
 
 .slider .slick-slide {
-  transform: scale(0.8);/*左右の画像のサイズを80%に*/
+  // transform: scale(6.6);/*左右の画像のサイズを80%に*/
   transition: all .5s;/*拡大や透過のアニメーションを0.5秒で行う*/
   opacity: 0.5;/*透過50%*/
 }
@@ -181,13 +183,13 @@ $textBgColor: #EAE0DA; // 吹き出しの背景色
 
 /*========= レイアウトのためのCSS ===============*/
 
-body{
+.body-bg{
   background:#eee;
 }
 
 h2,p {
     text-align:center;
-    padding:20px;
+    padding:0px;
 }
 
 ul{
@@ -204,3 +206,4 @@ a:hover,
 a:active{
   text-decoration: none;
 }
+

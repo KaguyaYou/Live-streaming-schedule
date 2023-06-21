@@ -2,16 +2,15 @@
   <div class="row">
     <div class="col-xl-12">
       <div class="group-show">
-        <div class="show-group-chat-back">
-          <span class="group-show-group-chat-back">
-            <%= link_to groups_path do %>
-              ＜
-            <% end %>
-          </span>
-        </div>
+
 
         <div class="chat-group-show-talk">
           <div class="chat-group-show-talk__head">
+              <span class="group-show-group-chat-back">
+                <%= link_to groups_path do %>
+                  ＜
+                <% end %>
+              </span>
             <%= @group.name %>(<%= @group.user_ids.count %>)
           </div>
           <div class="chat-group-show-talk__body">

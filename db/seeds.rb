@@ -7,7 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-puts "----------"
+
+puts "------admin create--------"
+
+  User.create!(
+  name: 'uta',
+  email: 'admin@gmail.com',
+  password: 'adminadmin',
+  admin: true
+  )
+
+
+
+
 
 puts "------------vtuber1 create-----------"
 
@@ -103,17 +115,6 @@ puts "------------vtuber6 create-----------"
 )
   vtuber.image.attach(io: File.open('./app/assets/images/kotone_hina.jpg'), filename: 'kotone_hina.jpg')
   vtuber.save!
-
-
-
-puts "------admin create--------"
-
-  User.create!(
-  name: 'uta',
-  email: 'admin@gmail.com',
-  password: 'adminadmin',
-  admin: true
-  )
 
 
 

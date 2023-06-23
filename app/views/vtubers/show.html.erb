@@ -39,12 +39,13 @@
           </td>
         </tr>
         <tr>
+          <% if @vtuber.user == current_user %>
           <td><%= link_to "いいねした投稿者", favorites_user_path(current_user) %>
+          <% end %>
             <%= render 'vtuber_comments/counter', vtuber: @vtuber %>
           </td>
         </tr>
-
-          <% end %>
+              <% end %>
 
       </table>
       <div class="position-absolute top-50 start-50">

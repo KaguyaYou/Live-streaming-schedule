@@ -3,13 +3,13 @@ class SearchesController < ApplicationController
 
   def search
     @model = params[:model]
-    @content = params[:content]
-     @method = params[:method]
+    @search = params[:search]
+     @word = params[:word]
 
     if @model =='user'
-      @records = User.looks(@content, @method)
+      @records = User.looks(@search, @word)
     else
-      @records = Vtuber.looks(@content, @method)
+      @records = Vtuber.looks(@search, @word)
     end
 
   end

@@ -46,13 +46,13 @@ class Vtuber < ApplicationRecord
 
   def self.looks(search, word)
     if search == "perfect_match"
-      @vtuber = Vtuber.where("title LIKE?","#{word}")
+      @vtuber = Vtuber.where("name LIKE?","#{word}")
     elsif search == "forward_match"
-      @vtuber = Vtuber.where("title LIKE?","#{word}%")
+      @vtuber = Vtuber.where("name LIKE?","#{word}%")
     elsif search == "backward_match"
-      @vtuber = Vtuber.where("title LIKE?","%#{word}")
+      @vtuber = Vtuber.where("name LIKE?","%#{word}")
     elsif search == "partial_match"
-      @vtuber = Vtuber.where("title LIKE?","%#{word}%")
+      @vtuber = Vtuber.where("name LIKE?","%#{word}%")
     else
       @vtuber = Vtuber.all
     end

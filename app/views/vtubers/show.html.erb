@@ -36,23 +36,26 @@
           <td><%= link_to(@vtuber.user) do %>
             <%= @vtuber.user.name %>
             <%= image_tag @vtuber.user.get_profile_image(100,100) %>
+            <% end %>
           </td>
         </tr>
         <tr>
           <% if @vtuber.user == current_user %>
-          <td><%= link_to "いいねした投稿者", favorites_user_path(current_user) %>
-          <% end %>
+          <td class=<%= "favorite-#{@vtuber.id}" %> >
+            <%= render "favorites/btn", vtuber: @vtuber %>
+          </td>
+        </tr>
+        <tr>
+          <td>
             <%= render 'vtuber_comments/counter', vtuber: @vtuber %>
           </td>
         </tr>
-              <% end %>
+
 
       </table>
       <div class="position-absolute top-50 start-50">
-        <% if @vtuber.user == current_user %>
         <%= link_to 'Edit', edit_vtuber_path(@vtuber), class: "btn btn-sm btn-success" %>
         <%= link_to 'Destroy', @vtuber, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
-      <% end %>
       </div>
     </div>
 
@@ -66,6 +69,7 @@
       <tr>
         <td>
           <%= render "vtuber_comments/form", vtuber: @vtuber, vtuber_comment: @vtuber_comment %>
+        <% end %>
         </td>
       </tr>
     </table>

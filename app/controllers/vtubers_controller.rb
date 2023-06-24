@@ -17,6 +17,7 @@ class VtubersController < ApplicationController
     @vtuber_new = Vtuber.new
     @vtuber_comment = VtuberComment.new
     @vtuber_tags = @vtuber.tags
+
   end
 
   def edit

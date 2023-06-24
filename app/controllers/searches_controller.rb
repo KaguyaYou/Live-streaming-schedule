@@ -5,6 +5,7 @@ class SearchesController < ApplicationController
     @model = params[:model]
     @search = params[:search]
      @word = params[:word]
+    p @search
 
     if @model =='user'
       @records = User.looks(@search, @word)

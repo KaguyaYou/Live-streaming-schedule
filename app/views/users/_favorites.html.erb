@@ -1,6 +1,25 @@
-
-<%= link_to image_tag( vtuber.image.variant(resize: '100x100') ), vtuber_path(vtuber.id) %>
-<%= link_to vtuber.user.name, user_path(vtuber.user.id) %>
-  <i class="fa fa-heart unlike-btn"></i>
-<%= vtuber.favorites.length %>
-<%= link_to vtuber.name, vtuber_path(vtuber.id) %>
+<table>
+  <% @favorite_vtubers.each do |vtuber| %> <tr>
+    <td>
+      <%= link_to image_tag( vtuber.image.variant(resize: '100x100') ), vtuber_path(vtuber.id) %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to vtuber.user.name, user_path(vtuber.user.id) %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <i class="fa fa-heart unlike-btn"></i>
+      <%= vtuber.favorites.length %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to vtuber.name, vtuber_path(vtuber.id) %>
+    </td>
+  </tr>
+  <br>
+  <% end %>
+</table>

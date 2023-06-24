@@ -9,6 +9,7 @@
       <h2>Vtubers</h2>
       <%= render 'vtubers/index',vtubers: @vtubers %>
       <%=link_to "下書き一覧", confirm_user_path(@user)%>
+      <%= link_to "いいねしたVtuber", favorites_user_path(current_user) %>
     </div>
   </div>
 </div>

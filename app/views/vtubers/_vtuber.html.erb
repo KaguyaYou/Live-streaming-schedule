@@ -1,0 +1,22 @@
+<tr>
+  <td>
+    <%= link_to image_tag(vtuber.image.variant(resize: '100x100')), vtuber_path(vtuber) %>
+  </td>
+</tr>
+<tr>
+  <td>
+    <%= link_to vtuber.user.name, user_path(vtuber.user) %>
+  </td>
+</tr>
+<tr>
+  <td>
+    <i class="fa fa-heart unlike-btn"></i>
+    <%= vtuber.favorites.length %>
+  </td>
+</tr>
+<tr>
+  <td>
+    <%= link_to vtuber.name, vtuber_path(vtuber) %>
+  </td>
+</tr>
+<br>

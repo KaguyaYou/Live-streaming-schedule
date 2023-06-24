@@ -34,7 +34,8 @@ class UsersController < ApplicationController
   end
 
   def favorites
-    @favorite_vtubers = current_user.favorite_vtubers
+    @user = User.find(params[:id])
+    @favorite_vtubers = @user.favorite_vtubers
     @vtuber = @favorite_vtubers.first
   end
 

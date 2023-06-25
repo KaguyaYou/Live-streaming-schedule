@@ -1,32 +1,27 @@
 <div class="chat-group">
 　  <h1>語紡り</h1>
-    <div class="group-search">
-        <div class="group-search-form">
-            <%= form_with url: groups_path do |f| %>
-                <%= f.text_field :keyword, placeholder: "グループ検索", class: "group-search-form-input" %>
-                <%= f.submit '検索' %>
-            <% end %>
-        </div>
-        <div class="group-new">
-            <%= link_to 'Create World', new_group_path %>
-        </div>
+      <div class="group-new">
+        <%= link_to 'Create World', new_group_path %>
+      </div>
 
         <% if @group_joining == [] %>
             <%= @group_lists_none %>
         <% else %>
             <div class="group-list">
-                <ul class="group-list-table">
-                    <% @group_lists.each do |list| %>
-                        <% if list.user_ids.include?(current_user.id) %>
-                            <li class="group-list-table-each-group">
-                                <%= link_to "/groups/#{list.id}" do %>
-                                    <%= list.name %>(<%= list.user_ids.count %>)
-                                    <%= link_to '編集', edit_group_path(list.id), method: :get %>
-                                    <%= link_to '削除', "/groups/#{list.id}", method: :delete %>
-                                <% end %>
-                            </li>
-                        <% end %>
-                    <% end %>
+              <ul class="group-list-table">
+              <% @group_lists.each do |list| %>
+              <% if list.user_ids.include?(current_user.id) %>
+                <li class="group-list-table-each-group">
+                <%= link_to "/groups/#{list.id}" do %>
+                  <%= list.name %>(<%= list.user_ids.count %>)
+                  <% if current_user.admin? %>
+                    <%= link_to '編集', edit_group_path(list.id), method: :get %>
+                    <%= link_to '削除', "/groups/#{list.id}", method: :delete %>
+                  <% end %>
+                <% end %>
+                </li>
+              <% end %>
+              <% end %>
                 </ul>
             </div>
         <% end %>

@@ -12,7 +12,7 @@
         <% if user_signed_in? %>
           <li>
             <%= link_to user_path(current_user),class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> Home
+              <i class="fas fa-home"></i> Mypage
             <% end %>
           </li>
           <li>
@@ -27,7 +27,7 @@
           </li>
           <li>
             <%= link_to groups_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> Review
+              <i class="far fa-comments"></i> chat
             <% end %>
           </li>
           <li>

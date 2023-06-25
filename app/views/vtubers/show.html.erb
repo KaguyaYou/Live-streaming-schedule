@@ -49,14 +49,16 @@
           <td>
             <%= render 'vtuber_comments/counter', vtuber: @vtuber %>
           </td>
+          <% end %>
         </tr>
 
 
       </table>
       <div class="position-absolute top-50 start-50">
-        <%= link_to 'Edit', edit_vtuber_path(@vtuber), class: "btn btn-sm btn-success" %>
-        <%= link_to 'Destroy', @vtuber, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
-          <% end %>
+        <% if @vtuber.user == current_user %>
+          <%= link_to 'Edit', edit_vtuber_path(@vtuber), class: "btn btn-sm btn-success" %>
+          <%= link_to 'Destroy', @vtuber, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+        <% end %>
       </div>
     </div>
 

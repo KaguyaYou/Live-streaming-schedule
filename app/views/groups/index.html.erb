@@ -1,7 +1,10 @@
 <div class="chat-group">
 　  <h1>語紡り</h1>
       <div class="group-new">
-        <%= link_to 'Create World', new_group_path %>
+        <button type="button" class="btn btn-info ">
+          <%= link_to 'Create World', new_group_path %>
+        </button>
+
       </div>
 
         <% if @group_joining == [] %>

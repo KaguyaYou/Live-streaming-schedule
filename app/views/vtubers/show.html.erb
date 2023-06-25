@@ -56,6 +56,7 @@
       <div class="position-absolute top-50 start-50">
         <%= link_to 'Edit', edit_vtuber_path(@vtuber), class: "btn btn-sm btn-success" %>
         <%= link_to 'Destroy', @vtuber, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+          <% end %>
       </div>
     </div>
 
@@ -69,7 +70,6 @@
       <tr>
         <td>
           <%= render "vtuber_comments/form", vtuber: @vtuber, vtuber_comment: @vtuber_comment %>
-        <% end %>
         </td>
       </tr>
     </table>

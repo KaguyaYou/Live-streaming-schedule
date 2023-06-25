@@ -2,7 +2,6 @@ class Vtuber < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :vtuber_comments, dependent: :destroy
-  has_many :favorite_users, through: :vtubers_users, source: :user
   has_many :vtuber_tags,dependent: :destroy
   has_many :tags, through: :vtuber_tags
   has_one_attached :image

@@ -1,36 +1,40 @@
-<div class="chat-group">
-　  <h1>語紡り</h1>
-      <div class="group-new">
-        <button type="button" class="btn btn-info ">
-          <%= link_to 'Create World', new_group_path %>
-        </button>
+<div class="container">
+  <div class="chat-group">
+  　  <h1>語紡り</h1>
+        <div class="group-new">
+          <button type="button" class="btn btn-info ">
+            <%= link_to 'Create World', new_group_path, class: "text-white" %>
+          </button>
+
+        </div>
+<br>
+          <% if @group_joining == [] %>
+              <%= @group_lists_none %>
+          <% else %>
+              <div class="group-list">
+                <table class="group-list-table">
+                    <% @group_lists.each do |list| %>
+                      <% if list.user_ids.include?(current_user.id) %>
+                        <tr class="group-list-table-each-group">
+                          <td><%= link_to "/groups/#{list.id}" do %>
+                            <span class="border border-3 rounded"><%= list.name %>(<%= list.user_ids.count %>)</span>
+                              <% if current_user.admin? %>
+                                 <button type="button" class="btn btn-success "><%= link_to '編集', edit_group_path(list.id), method: :get, class: "text-white" %></button>
+                                 <button type="button" class="btn btn-danger "><%= link_to '削除', "/groups/#{list.id}", method: :delete, class: "text-white" %></button>
+                              <% end %>
+                            <% end %>
+                          </td>
+                        </tr>
+                      <% end %>
+                    <% end %>
+                </table>
+              </div>
+          <% end %>
 
       </div>
-
-        <% if @group_joining == [] %>
-            <%= @group_lists_none %>
-        <% else %>
-            <div class="group-list">
-              <ul class="group-list-table">
-              <% @group_lists.each do |list| %>
-              <% if list.user_ids.include?(current_user.id) %>
-                <li class="group-list-table-each-group">
-                <%= link_to "/groups/#{list.id}" do %>
-                  <%= list.name %>(<%= list.user_ids.count %>)
-                  <% if current_user.admin? %>
-                    <%= link_to '編集', edit_group_path(list.id), method: :get %>
-                    <%= link_to '削除', "/groups/#{list.id}", method: :delete %>
-                  <% end %>
-                <% end %>
-                </li>
-              <% end %>
-              <% end %>
-                </ul>
-            </div>
-        <% end %>
-
-    </div>
-    <div class="user-page">
-        <%= link_to 'マイページへ', current_user %>
-    </div>
+      <br></br>
+      <div class="user-page">
+          <%= link_to 'マイページへ', current_user %>
+      </div>
+  </div>
 </div>

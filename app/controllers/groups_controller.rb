@@ -57,4 +57,11 @@ class GroupsController < ApplicationController
         def group_params
             params.require(:group).permit(:name, user_ids: [])
         end
+
+        def is_matching_login_user
+          group = Group.find(params[:id])
+          unless group.users.include?(current_user)
+            redirect_to groups_path
+          end
+        end
 end

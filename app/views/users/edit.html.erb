@@ -6,7 +6,7 @@
       <!--%= render 'layouts/errors', obj: @user %>-->
       <div class="form-group">
         <%= f.label :name %>
-        <%= f.text_field :name, class: "name" %>
+        <%= f.text_field :name, class: "name", placeholder: "(30文字以内)" %>
       </div>
      <div class="form-group">
         <%= f.label :image %>
@@ -19,7 +19,7 @@
 
       <div class="form-group">
         <%= f.label :Profile %>
-        <%= f.text_area :introduction, class: "form-control introduction" %>
+        <%= f.text_area :introduction, class: "form-control introduction", placeholder: "(30文字以内)" %>
       </div>
       <div class="form-group">
         <%= f.submit class: 'btn btn-secondary' %>

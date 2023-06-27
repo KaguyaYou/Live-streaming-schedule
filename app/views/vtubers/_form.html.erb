@@ -1,7 +1,7 @@
 <%= form_with model: vtuber, local:true do |f| %>
   <div class="form-group">
     <%= f.label :"名前" %>
-    <%= f.text_area :name, class: 'form-control vtuber_name' %>
+    <%= f.text_area :name, class: 'form-control vtuber_name', placeholder: "2文字以上20文字以内" %>
   </div>
 
   <div class="form-group">
@@ -14,12 +14,12 @@
 
   <div class="form-group">
     <%= f.label :"所属事務所" %>
-    <%= f.text_area :belonging_office, class: 'form-control vtuber_belonging_office' %>
+    <%= f.text_area :belonging_office, class: 'form-control vtuber_belonging_office',placeholder: "2文字以上10文字以内" %>
   </div>
 
   <div class="form-group">
     <%= f.label :"愛称" %>
-    <%= f.text_area :fan_name, class: 'form-control vtuber_fan_name' %>
+    <%= f.text_area :fan_name, class: 'form-control vtuber_fan_name',placeholder: "2文字以上10文字以内" %>
   </div>
 
   <div class="form-group">
@@ -34,7 +34,7 @@
 
   <div class="form-group">
     <%= f.label :"プロフィール" %>
-    <%= f.text_area :profile, class: 'form-control vtuber_profile' %>
+    <%= f.text_area :profile, class: 'form-control vtuber_profile',placeholder: "2文字以上500文字以内" %>
   </div>
 
   <div class="field">
@@ -52,7 +52,7 @@
     <%= f.label :status, "下書き保存", {value: :false, style: "display: inline-block;"} %></div>
   </div>
 
-  
+
 　<div class="field" style="margin:20px 0;">
     <%= f.submit "投稿",class:"btn btn-outline-primary btn-block" %>
   </div>

@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
   before_action :authenticate_user!
+  before_action :is_matching_login_user, only: [:edit, :update]
 
     def index
         @group_lists = Group.all

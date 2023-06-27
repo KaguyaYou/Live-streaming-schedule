@@ -33,7 +33,7 @@ class VtubersController < ApplicationController
     @vtuber =current_user.vtubers.new(vtuber_params.select{|k,v| k != "tag_name"})
     @vtuber.user_id = current_user.id
     #受け取った値を,で区切って配列にする
-    tag_list=params[:vtuber][:tag_name].split(',')
+    tag_list=params[:vtuber][:tag_name].split(/[,|、]+/)
     if @vtuber.save
       @vtuber.save_tag(tag_list)
       # byebug
@@ -71,7 +71,7 @@ class VtubersController < ApplicationController
          @vtuber.vtuber_tags.destroy_all
 
         #新しいタグの関連を保存
-        tag_list = params[:vtuber][:tag_name].split(",").map(&:strip)
+        tag_list = params[:vtuber][:tag_name].split(/[,|、]+/).map(&:strip)
         @vtuber.save_tag(tag_list)
 
         redirect_to vtuber_path(@vtuber.id),notice: '投稿完了しました:)'

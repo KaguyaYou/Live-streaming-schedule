@@ -82,7 +82,9 @@
         <% end %>
         <tr>
           <td>
-            <%= render "vtuber_comments/form", vtuber: @vtuber, vtuber_comment: @vtuber_comment %>
+            <% if @vtuber.user == current_user %>
+              <%= render "vtuber_comments/form", vtuber: @vtuber, vtuber_comment: @vtuber_comment %>
+            <% end %>
           </td>
         </tr>
       </table>

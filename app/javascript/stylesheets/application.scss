@@ -38,7 +38,7 @@ $textBgColor: #EAE0DA; // 吹き出しの背景色
     max-width: 50px;
     min-width: 50px;
     img {
-      border-radius: 50%;
+      // border-radius: 50%;
     }
   }
   // 吹き出し
@@ -115,7 +115,7 @@ $textBgColor: #EAE0DA; // 吹き出しの背景色
 }
 
 .slider .slick-slide {
-  // transform: scale(6.6);/*左右の画像のサイズを80%に*/
+  transform: scale(0.8);/*左右の画像のサイズを80%に*/
   transition: all .5s;/*拡大や透過のアニメーションを0.5秒で行う*/
   opacity: 0.5;/*透過50%*/
 }
@@ -203,7 +203,4 @@ a:hover,
 a:active{
   text-decoration: none;
 }
-
-
-
 

@@ -1,13 +1,6 @@
 <div class="container">
 <!-- form_with部分 -->
-  <div class="row">
-    <div id="user_info">
-      <div class="col-md-8 ">
-        <h2>User info</h2>
-          <!--%= render 'info', user: current_user %>-->
-        <h2 class="mt-8">Who's vtuber?</h2>
-        <%= render 'vtubers/form' , vtuber: @vtuber %>
-      </div>
-    </div>
+    <h2>Who's vtuber?</h2>
+      <%= render 'vtubers/form' , vtuber: @vtuber %>
   </div>
 </div>

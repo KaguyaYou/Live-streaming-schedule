@@ -6,6 +6,17 @@ class Vtuber < ApplicationRecord
   has_many :tags, through: :vtuber_tags
   has_one_attached :image
 
+  validates :name, presence: true,length:{ minimum: 2, maximum: 20  },uniqueness: true
+  validates :user_id, presence: true
+  validates :belonging_office, presence: true
+  validates :fan_name, presence: true
+  validates :debut_day, presence: true
+  validates :registered_person, presence: true
+  validates :profile, presence: true
+  # validates :status,
+
+
+
 
   def get_image(width, height)
     unless get_image.attached?

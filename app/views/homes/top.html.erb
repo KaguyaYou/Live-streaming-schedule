@@ -1,6 +1,6 @@
 <body class="body body-bg">
   <main>
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-9">
           <p>当サイトは、Vtuber（バーチャルユーチューバー）の紹介とレビューに特化したウェブサイトです<br>私たちは、さまざまなVtuberの情報を提供し、彼らの個性や活動内容を紹介することで、<br>Vtuberファンコミュニティをサポートしています。</p>
@@ -26,7 +26,6 @@
         <!--<p>使用したライブラリ：<a href="https://kenwheeler.github.io/slick/" target="_blank">https://kenwheeler.github.io/slick/</a></p>-->
       <div class="all-vtubers-show-button"><%= link_to "全てのVtuberをみる", vtubers_path %></div>
   </main>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/js/6-1-7.js"></script>
+   <%= javascript_pack_tag 'top'%>
 </body>
+

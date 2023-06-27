@@ -11,7 +11,7 @@
     <% vtubers.each do |vtuber| %>
       <tr>
         <td><%= link_to vtuber_path(vtuber) do %>
-          <%= image_tag vtuber.image, size:'50x50' %>
+          <%= image_tag vtuber.image, size:'50x70' %>
           <% end %>
         </td>
         <td><%= link_to vtuber.name,vtuber, class: "vtuber_#{vtuber.id}" %></td>
@@ -23,4 +23,4 @@
       </tr>
     <% end %>
   </tbody>
-</table> 
+</table>

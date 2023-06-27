@@ -8,7 +8,8 @@
                 <%= vtuber_comment.user.name %>
               <% end %>
             </td>
-            <td><%= vtuber_comment.created_at.strftime('%Y/%m/%d') %><%= vtuber_comment.comment %></td>
+            <td><%= vtuber_comment.created_at.strftime('%Y/%m/%d') %></td>
+            <td class="text-break"><%= vtuber_comment.comment %></td>
             <td>
               <% if vtuber_comment.user == current_user %>
                 <%= link_to "削除", vtuber_vtuber_comment_path(vtuber_comment.vtuber, vtuber_comment), method: :delete,class: "btn btn-sm btn-danger" %>

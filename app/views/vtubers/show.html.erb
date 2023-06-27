@@ -1,15 +1,21 @@
-<div class='container-fluid'>
+<div class='container'>
   <div class='row'>
-    <div class='col-md-3 col-mr-4'>
+    <div class='col-md-10'>
       <div class='col-md-14 offset-md-1'>
-  		<h2><%= @vtuber.name %></h2>
-  		<table class='table'>
+  		<table class='table text-center'>
   		  <tr>
-  		    <td><% if @vtuber.image.attached? %>
+  		    <td>
+  		      <h2><%= @vtuber.name %></h2>
+  		    </td>
+  		  </tr>
+  		  <tr>
+  		    <td>
+  		      <% if @vtuber.image.attached? %>
               <%= image_tag @vtuber.image, size: "200x250" %>
             <% else %>
               <%= image_tag 'no_image', size: "200x200" %>
-            <% end %></td>
+            <% end %>
+          </td>
   		  </tr>
         <tr>
           <td><%= @vtuber.belonging_office %></td>
@@ -24,7 +30,7 @@
           <td><%= @vtuber.registered_person %>人</td>
         </tr>
         <tr>
-          <td><%= @vtuber.profile %></td>
+          <td class="text-break"><%= @vtuber.profile %></td>
         </tr>
         <tr>
           <td><% @vtuber_tags.each do |tag| %>
@@ -51,29 +57,26 @@
           </td>
           <% end %>
         </tr>
-
-
+        <tr>
+          <td>
+            <% if @vtuber.user == current_user %>
+              <%= link_to 'Edit', edit_vtuber_path(@vtuber), class: "btn btn-sm btn-success" %>
+              <%= link_to 'Destroy', @vtuber, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= render "vtuber_comments/index", vtuber: @vtuber %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= render "vtuber_comments/form", vtuber: @vtuber, vtuber_comment: @vtuber_comment %>
+          </td>
+        </tr>
       </table>
-      <div class="position-absolute top-50 start-50">
-        <% if @vtuber.user == current_user %>
-          <%= link_to 'Edit', edit_vtuber_path(@vtuber), class: "btn btn-sm btn-success" %>
-          <%= link_to 'Destroy', @vtuber, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
-        <% end %>
       </div>
     </div>
-
-  </div>
-
-  <div class='col-md-5 col-mr-4'>
-  <%= render "vtuber_comments/index", vtuber: @vtuber %>
-  </div>
-  <div class='col-md-4 col-mr-4'>
-    <table class="table">
-      <tr>
-        <td>
-          <%= render "vtuber_comments/form", vtuber: @vtuber, vtuber_comment: @vtuber_comment %>
-        </td>
-      </tr>
-    </table>
   </div>
 </div>

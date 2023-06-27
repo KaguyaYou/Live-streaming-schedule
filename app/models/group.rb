@@ -1,8 +1,9 @@
 class Group < ApplicationRecord
-  has_many :group_users, dependent: :destroy #追加
-  has_many :users, through: :group_users, dependent: :destroy #追加
+  has_many :group_users, dependent: :destroy
+  has_many :users, through: :group_users, dependent: :destroy
   has_many :chats
   validates :name, presence: true, uniqueness: true
+  
 
   def profile_image_url
     if profile_image.present?

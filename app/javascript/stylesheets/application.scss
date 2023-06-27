@@ -38,7 +38,7 @@ $textBgColor: #EAE0DA; // 吹き出しの背景色
     max-width: 50px;
     min-width: 50px;
     img {
-      // border-radius: 50%;
+      border-radius: 50%;
     }
   }
   // 吹き出し
@@ -83,6 +83,8 @@ $textBgColor: #EAE0DA; // 吹き出しの背景色
       background-color: $textBgColor;
       padding: 10px;
       border-radius: 20px;
+      width: 100px;
+      word-wrap: break-word;
       & + p {
         margin-top: 15px;
         &::before {

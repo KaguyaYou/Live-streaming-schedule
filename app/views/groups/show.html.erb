@@ -46,13 +46,13 @@
       </div>
     </div>
   </div>
-
+</div>
 
   <%= form_with model: @chat, url: group_chats_path(group_id: @group.id), local: true  do |f| %>
     <%= f.text_field :message %>
     <%= f.hidden_field :room_id %>
     <%= f.submit "SEND", class: "btn btn-sm btn-success chat-btn"%>
   <% end %>
-</div>
+
 
 

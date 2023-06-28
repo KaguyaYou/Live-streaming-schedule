@@ -10,6 +10,7 @@
       <h2>Vtuberリスト</h2>
         <ul class="slider">
           <% @vtubers.each do |vtuber| %>
+           <% unless vtuber.draft? %>
             <li>
               <%= link_to vtuber_path(vtuber) do %>
                 <% if vtuber.image.attached? %>
@@ -20,10 +21,10 @@
                 <%= vtuber.name %>
               <% end %>
             </li>
+            <% end %>
           <% end %>
           <!--/slider-->
         </ul>
-        <!--<p>使用したライブラリ：<a href="https://kenwheeler.github.io/slick/" target="_blank">https://kenwheeler.github.io/slick/</a></p>-->
       <div class="all-vtubers-show-button"><%= link_to "全てのVtuberをみる", vtubers_path %></div>
   </main>
    <%= javascript_pack_tag 'top'%>

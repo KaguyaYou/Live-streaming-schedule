@@ -3,7 +3,7 @@ class Group < ApplicationRecord
   has_many :users, through: :group_users, dependent: :destroy
   has_many :chats
 
-
+  validates :name, presence: true,length:{ minimum: 2, maximum: 20  },uniqueness: true
 
   def profile_image_url
     if profile_image.present?

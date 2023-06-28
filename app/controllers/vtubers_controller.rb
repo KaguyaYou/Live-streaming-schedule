@@ -1,5 +1,5 @@
 class VtubersController < ApplicationController
-  before_action :authenticate_user!, only:[:new, :create]
+  before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update]
 
   def index

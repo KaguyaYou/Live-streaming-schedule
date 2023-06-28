@@ -17,7 +17,7 @@
             <% else %>
               <%= image_tag("no_image.jpg") %> <!--画像が添付されていない場合の表示 -->
             <% end %>
-        <% end %>
+          <% end %>
         </td>
         <td><%= link_to vtuber.name,vtuber, class: "vtuber_#{vtuber.id}" %></td>
         <td><%= vtuber.belonging_office %></td>

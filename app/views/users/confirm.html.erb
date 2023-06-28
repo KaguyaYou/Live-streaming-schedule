@@ -5,7 +5,7 @@
         <% @vtubers.each do |vtuber| %>
           <%=link_to vtuber_path(vtuber.id) do %>
             <%# if vtuber.image.present? %>
-              <%= image_tag @vtuber.image, size: "200x250" %>
+              <%= image_tag vtuber.image, size: "200x250" %>
             <%# else %>
               <%#= image_tag("no_image.jpg") %> <!--画像が添付されていない場合の表示 -->
             <%# end %>

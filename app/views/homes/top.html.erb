@@ -10,7 +10,7 @@
       <h2>Vtuberリスト</h2>
         <ul class="slider">
           <% @vtubers.each do |vtuber| %>
-           <% unless vtuber.draft? %>
+           <%# unless vtuber.draft? %>
             <li>
               <%= link_to vtuber_path(vtuber) do %>
                 <% if vtuber.image.attached? %>

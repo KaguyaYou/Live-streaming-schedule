@@ -1,5 +1,6 @@
 class VtubersController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create]
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def index
     @total_vtubers =Vtuber.all
@@ -85,5 +86,12 @@ class VtubersController < ApplicationController
 
   def vtuber_params
     params.require(:vtuber).permit(:name,:belonging_office,:fan_name,:debut_day,:registered_person,:profile,:image,:user_id,:status)
+  end
+
+  def is_matching_login_user
+    vtuber = Vtuber.find(params[:id])
+    unless vtuber.users.include?(current_user)
+      redirect_to
+    end
   end
 end

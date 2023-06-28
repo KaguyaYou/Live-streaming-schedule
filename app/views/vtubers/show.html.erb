@@ -70,21 +70,9 @@
             <%= render "vtuber_comments/index", vtuber: @vtuber %>
           </td>
         </tr>
-        <% if @vtuber_comment.errors.any? %>
-          <div class="alert alert-danger">
-            <h3><%= @vtuber_comment.errors.count %>つのエラーが発生しました</h3>
-            <ul>
-              <% @vtuber_comment.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
         <tr>
           <td>
-            <% if @vtuber.user == current_user %>
               <%= render "vtuber_comments/form", vtuber: @vtuber, vtuber_comment: @vtuber_comment %>
-            <% end %>
           </td>
         </tr>
       </table>

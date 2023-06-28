@@ -28,9 +28,10 @@
             <p>
               <i class="fas fa-tag">
                 <!--タグリスト-->
-              <% @tag_list.each do |list|%>
-                <%=link_to list.tag_name,search_tag_path(tag_id: list.id) %>
-                <%="(#{list.vtubers.count})" %>
+              <% vtuber.vtuber_tags.each do |vtuber_tag|%>
+                <% tag = vtuber_tag.tag %>
+                <%=link_to tag.tag_name,search_tag_path(tag_id: tag.id) %>
+                <%="(#{tag.vtubers.count})" %>
               <% end %>
               </i>
             </p>

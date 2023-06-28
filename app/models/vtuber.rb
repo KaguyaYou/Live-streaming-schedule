@@ -8,6 +8,7 @@ class Vtuber < ApplicationRecord
 
   validates :name, presence: true,length:{ minimum: 2, maximum: 20  },uniqueness: true
   validates :user_id, presence: true
+  validates :image, presence: true
   validates :belonging_office, presence: true,length:{ minimum: 2, maximum: 10}
   validates :fan_name, presence: true,length:{ minimum: 2, maximum: 10 }
   validates :registered_person, presence: true

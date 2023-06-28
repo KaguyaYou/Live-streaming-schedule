@@ -10,9 +10,14 @@
   <tbody>
     <% vtubers.each do |vtuber| %>
       <tr>
-        <td><%= link_to vtuber_path(vtuber) do %>
-          <%= image_tag vtuber.image, size:'50x70' %>
-          <% end %>
+        <td>
+          <%= link_to vtuber_path(vtuber) do %>
+            <% if vtuber.image.attached? %>
+              <%= image_tag vtuber.image, size:'50x70' %>
+            <% else %>
+              <%= image_tag("no_image.jpg") %> <!--画像が添付されていない場合の表示 -->
+            <% end %>
+        <% end %>
         </td>
         <td><%= link_to vtuber.name,vtuber, class: "vtuber_#{vtuber.id}" %></td>
         <td><%= vtuber.belonging_office %></td>

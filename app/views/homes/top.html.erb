@@ -1,32 +1,22 @@
-<body class="body body-bg">
-  <main>
-    <div class="container">
-      <div class="row">
-        <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-9">
-          <p>当サイトは、Vtuber（バーチャルユーチューバー）の紹介とレビューに特化したウェブサイトです<br>私たちは、さまざまなVtuberの情報を提供し、彼らの個性や活動内容を紹介することで、<br>Vtuberファンコミュニティをサポートしています。</p>
-        </div>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-9">
+      <p>当サイトは、Vtuber（バーチャルユーチューバー）の紹介とレビューに特化したウェブサイトです<br>私たちは、さまざまなVtuberの情報を提供し、彼らの個性や活動内容を紹介することで、<br>Vtuberファンコミュニティをサポートしています。</p>
     </div>
-      <h2>Vtuberリスト</h2>
-        <ul class="slider">
-          <% @vtubers.each do |vtuber| %>
-           <% unless vtuber.status == "draft" %>
-            <li>
-              <%= link_to vtuber_path(vtuber) do %>
-                <% if vtuber.image.attached? %>
-                  <%= image_tag vtuber.image.variant(resize_to_limit: [1000, nil]), class:"slider" %>
-                <% else %>
-                  <%= image_tag("no_image.jpg") %> <!--画像が添付されていない場合の表示 -->
-                <% end %>
-                <%= vtuber.name %>
-              <% end %>
-            </li>
-            <% end %>
-          <% end %>
-          <!--/slider-->
-        </ul>
-      <div class="all-vtubers-show-button"><%= link_to "全てのVtuberをみる", vtubers_path %></div>
-  </main>
-   <%= javascript_pack_tag 'top'%>
-</body>
+  </div>
+</div>
+<h2>Vtuberリスト</h2>
+  <ul class="slider">
+    <% @vtubers.each do |vtuber| %>
+      <li>
+        <%= link_to vtuber_path(vtuber) do %>
+            <%= image_tag vtuber.image.variant(resize_to_limit: [1000, nil]), class: "slider-item" %>
+          <%= vtuber.name %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 
+<div class="all-vtubers-show-button"><%= link_to "全てのVtuberをみる", vtubers_path %></div>
+
+<%= javascript_pack_tag 'top'%>

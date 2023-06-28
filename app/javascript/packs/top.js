@@ -1,7 +1,6 @@
 import $ from "jquery";
 import 'slick-carousel';
 
-
 $(function(){
   $('.slider').not('.slick-initialized').slick({
     autoplay: true,//自動的に動き出すか。初期値はfalse。
@@ -16,3 +15,4 @@ $(function(){
     dots: true,//下部ドットナビゲーションの表示
   });
 })
+

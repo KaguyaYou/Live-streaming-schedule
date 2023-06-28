@@ -90,7 +90,7 @@ class VtubersController < ApplicationController
 
   def is_matching_login_user
     vtuber = Vtuber.find(params[:id])
-    unless vtuber.users.include?(current_user)
+    unless vtuber.user.id == current_user.id
       redirect_to vtubers_path
     end
   end

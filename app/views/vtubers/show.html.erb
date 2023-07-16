@@ -72,7 +72,11 @@
         </tr>
         <tr>
           <td>
+            <% if user_signed_in? %>
               <%= render "vtuber_comments/form", vtuber: @vtuber, vtuber_comment: @vtuber_comment %>
+            <% else %>
+              <p>コメントするには<a href="<%= new_user_session_path %>">ログイン</a>してください。</p>
+            <% end %>
           </td>
         </tr>
       </table>
